@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_listBookFragment_to_detailsBookFragment"
             app:destination="@id/detailsBookFragment" />
+        <action
+            android:id="@+id/action_listBookFragment_to_formBookFragment"
+            app:destination="@id/formBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsBookFragment"
@@ -23,6 +26,14 @@
             app:argType="com.as.tsm.data.model.Book" />
         <action
             android:id="@+id/action_detailsBookFragment_to_listBookFragment"
+            app:destination="@id/listBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formBookFragment"
+        android:name="com.as.tsm.ui.fragments.FormBookFragment"
+        android:label="FormBookFragment" >
+        <action
+            android:id="@+id/action_formBookFragment_to_listBookFragment"
             app:destination="@id/listBookFragment" />
     </fragment>
 </navigation>

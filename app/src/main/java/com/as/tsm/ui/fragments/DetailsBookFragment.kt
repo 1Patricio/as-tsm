@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.`as`.tsm.R
+import com.`as`.tsm.databinding.FragmentDetailsBookBinding
 
 class DetailsBookFragment : Fragment() {
+    private  lateinit var binding: FragmentDetailsBookBinding
     val args: DetailsBookFragmentArgs by navArgs()
 
     override fun onCreateView(

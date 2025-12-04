@@ -13,8 +13,6 @@ nav-version = "2.8.6"
 json-serialization = "1.7.3"
 room = "2.6.1"
 livedata-lifecycle = "2.7.0"
-roomCommonJvm = "2.8.4"
-roomKtx = "2.8.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,8 +30,6 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 lifecycle-livedata = { group = "androidx.lifecycle", name="lifecycle-livedata-ktx", version.ref = "livedata-lifecycle" }
-androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
-androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

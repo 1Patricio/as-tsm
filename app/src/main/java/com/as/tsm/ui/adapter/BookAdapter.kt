@@ -5,15 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.`as`.tsm.R
 import com.`as`.tsm.data.model.Book
+import com.`as`.tsm.databinding.BookItemListBinding
 
 class BookAdapter(
     private val onDelete: (Book) -> Unit,
-    private val onDetails: (Book) -> Unit
+    private val onDetails: (Book) -> Unit,
+    private val onCheck: (Book) -> Unit
 ) : ListAdapter<Book, BookViewHolder>(BookDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val bookView =
-            LayoutInflater.from(parent.context).inflate(R.layout.book_item_list, parent, false)
-        return BookViewHolder(bookView = bookView, onDelete = onDelete, onDetails = onDetails)
+        val binding =
+            BookItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BookViewHolder(
+            binding = binding,
+            onDelete = onDelete,
+            onDetails = onDetails,
+            onCheck = onCheck
+        )
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {

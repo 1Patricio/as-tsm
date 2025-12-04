@@ -7,64 +7,60 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.`as`.tsm.R
-import com.`as`.tsm.data.BookRepository
 import com.`as`.tsm.data.model.Book
+import com.`as`.tsm.databinding.FragmentListBookBinding
 import com.`as`.tsm.ui.adapter.BookAdapter
 import com.`as`.tsm.ui.viewmodel.BookViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlin.getValue
+import kotlin.io.root
 
 class ListBookFragment : Fragment() {
+    private lateinit var binding: FragmentListBookBinding
     private lateinit var adapter: BookAdapter
-    private lateinit var binding: ListBookFragmentBiding
-
     private val bookViewModel: BookViewModel by viewModels()
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         bookViewModel.bookList.observe(viewLifecycleOwner) { book ->
             adapter.submitList(book.toMutableList())
         }
 
-        binding = ListBookFragment.inflate(inflater, container, false)
-
-        return inflater.inflate(R.layout.fragment_list_book, container, false)
+        binding = FragmentListBookBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-
+        val rc = binding.recyclerView
         adapter = BookAdapter(
             onDelete = { book ->
-                Snackbar.make(
-                    view.context,
-                    recyclerView,
-                    "Deletado com sucesso!",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-
-                val newList = bookRepository.bookList.toMutableList()
-                newList.remove(book)
-
-                bookRepository.bookList = newList
-                adapter.submitList(newList)
+                bookViewModel.removeBook(book)
             },
             onDetails = { book ->
-                val action =
-                    ListBookFragmentDirections.actionListBookFragmentToDetailsBookFragment(book)
-
-                findNavController().navigate(action)
+                goToDetails(book = book)
+            },
+            onCheck = { book ->
+                bookViewModel.readBook(bookId = book.id, isRead = !book.r)
             }
         )
+        rc.adapter = adapter
 
-        recyclerView.adapter = adapter
-        adapter.submitList(bookRepository.bookList)
+        binding.fabAdd.setOnClickListener {
+            val action = ListBookFragmentDirections.actionListTodoFragmentToFormTodoFragment()
+            findNavController().navigate(action)
+        }
     }
+
+    private fun goToDetails(book: Book) {
+        val action = ListBookFragmentDirections.actionListBookFragmentToDetailsBookFragment(book)
+        findNavController().navigate(action)
+    }
+
 }
