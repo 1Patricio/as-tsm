@@ -16,7 +16,7 @@ class BookViewModel : ViewModel(){
         _bookList.value = repository.getAllBooks()
     }
 
-    private fun deleteBook(book: Book){
+    fun deleteBook(book: Book){
         val newList = repository.bookList
         newList.remove(book)
 

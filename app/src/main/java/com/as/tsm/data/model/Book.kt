@@ -8,5 +8,6 @@ data class Book(
     val author: String,
     val yearPublication: Int,
     val synopsis: String,
+    val read: Boolean
 ) : Serializable
 
