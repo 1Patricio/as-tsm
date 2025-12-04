@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listBookFragment">
+
+    <fragment
+        android:id="@+id/listBookFragment"
+        android:name="com.as.tsm.ui.fragments.ListBookFragment"
+        android:label="App Book"
+        tools:layout="@layout/fragment_list_book">
+        <action
+            android:id="@+id/action_listTodoFragment_to_detailsTodoFragment"
+            app:destination="@id/detailsTodoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsTodoFragment"
+        android:name="com.as.tsm.ui.fragments.DetailsBookFragment"
+        android:label="Details Book">
+        <action
+            android:id="@+id/action_detailsTodoFragment_to_listTodoFragment"
+            app:destination="@id/listBookFragment" />
+        <argument
+            android:name="todo"
+            app:argType="com.example.fragmentsandnavigation.data.model.Todo" />
+    </fragment>
+</navigation>

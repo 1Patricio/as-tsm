@@ -3,7 +3,7 @@ package com.`as`.tsm.data
 import com.`as`.tsm.data.model.Book
 
 class BookRepository {
-    val bookList = mutableListOf(
+    var bookList = mutableListOf(
         Book(1, "1984", "George Orwell", 1949, "Uma distopia sobre vigilância e controle.", false),
         Book(2, "O Senhor dos Anéis", "J.R.R. Tolkien", 1954, "A jornada épica para destruir o Um Anel.", false),
         Book(3, "Dom Casmurro", "Machado de Assis", 1899, "A história de Bentinho e a dúvida eterna sobre Capitu.", false),

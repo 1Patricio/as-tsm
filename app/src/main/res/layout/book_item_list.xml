@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,7 +23,7 @@
 
 
             <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/todoCheck"
+                android:id="@+id/readCheck"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:text=""
@@ -37,9 +36,9 @@
                 android:layout_height="wrap_content"
                 android:text="Lido"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/todoCheck"
-                app:layout_constraintStart_toStartOf="@id/todoCheck"
-                app:layout_constraintTop_toBottomOf="@id/todoCheck" />
+                app:layout_constraintEnd_toEndOf="@id/readCheck"
+                app:layout_constraintStart_toStartOf="@id/readCheck"
+                app:layout_constraintTop_toBottomOf="@id/readCheck" />
 
             <TextView
                 android:id="@+id/bookTitle"
@@ -75,10 +74,22 @@
                 android:textAlignment="textStart"
                 android:textSize="18sp"
                 android:textStyle="italic"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/bookSynopsis"
                 tools:text="Autor" />
+
+            <TextView
+                android:id="@+id/yearPublication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Ano"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintStart_toEndOf="@id/bookAuthor"
+                app:layout_constraintTop_toBottomOf="@id/bookSynopsis" />
 
             <TextView
                 android:id="@+id/actionDetails"
