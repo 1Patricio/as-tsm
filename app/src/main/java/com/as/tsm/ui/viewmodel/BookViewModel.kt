@@ -1,25 +1,40 @@
 package com.`as`.tsm.ui.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.`as`.tsm.data.BookRepository
+import com.`as`.tsm.data.local.BookLocalDataSource
+import com.`as`.tsm.data.local.database.AppDatabase
 import com.`as`.tsm.data.model.Book
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class BookViewModel : ViewModel(){
-    private val repository = BookRepository()
 
-    private val _bookList = MutableLiveData<List<Book>>()
-    val bookList: LiveData<List<Book>> = _bookList
+class BookViewModel(application: Application) : AndroidViewModel(application) {
+    private val bookDao = AppDatabase.getInstance(application).bookDao()
+    private val localDataSource = BookLocalDataSource(bookDao)
+    private val repository = BookRepository(localDataSource)
 
-    init{
-        _bookList.value = repository.getAllBooks()
+    private val _booklist = repository.getAllBooks().asLiveData()
+
+    val bookList: LiveData<List<Book>> = _booklist
+
+    init {
+        repository.getAllBooks()
     }
 
-    fun deleteBook(book: Book){
-        val newList = repository.bookList
-        newList.remove(book)
+    fun removeBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
+        repository.remove(book)
+    }
 
-        _bookList.value = newList.toList()
+    fun addBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
+        repository.add(book)
+    }
+
+    fun readBook(bookId: Int, isRead: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        repository.readBook(bookId, isRead)
     }
 }

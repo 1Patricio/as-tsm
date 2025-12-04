@@ -11,18 +11,18 @@
         android:label="App Book"
         tools:layout="@layout/fragment_list_book">
         <action
-            android:id="@+id/action_listTodoFragment_to_detailsTodoFragment"
-            app:destination="@id/detailsTodoFragment" />
+            android:id="@+id/action_listBookFragment_to_detailsBookFragment"
+            app:destination="@id/detailsBookFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailsTodoFragment"
+        android:id="@+id/detailsBookFragment"
         android:name="com.as.tsm.ui.fragments.DetailsBookFragment"
         android:label="Details Book">
-        <action
-            android:id="@+id/action_detailsTodoFragment_to_listTodoFragment"
-            app:destination="@id/listBookFragment" />
         <argument
-            android:name="todo"
-            app:argType="com.example.fragmentsandnavigation.data.model.Todo" />
+            android:name="book"
+            app:argType="com.as.tsm.data.model.Book" />
+        <action
+            android:id="@+id/action_detailsBookFragment_to_listBookFragment"
+            app:destination="@id/listBookFragment" />
     </fragment>
 </navigation>

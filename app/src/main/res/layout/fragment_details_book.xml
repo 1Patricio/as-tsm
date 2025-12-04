@@ -39,7 +39,7 @@
                 tools:text="1" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/fragmentBookTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 tools:text="Title" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/fragmentAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 tools:text="Author" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/fragmentSynopsis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 tools:text="Synopsis" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/fragmentYearPublication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
