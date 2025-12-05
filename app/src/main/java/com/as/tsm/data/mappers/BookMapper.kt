@@ -5,6 +5,7 @@ import com.`as`.tsm.data.model.Book
 
 fun Book.convertToEntity() =
     BookEntity(
+        id = this.id,
         title = this.title,
         author = this.author,
         yearPublication = this.yearPublication,

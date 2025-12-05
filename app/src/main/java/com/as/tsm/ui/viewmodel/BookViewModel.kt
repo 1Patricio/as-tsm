@@ -9,6 +9,7 @@ import com.`as`.tsm.data.BookRepository
 import com.`as`.tsm.data.local.BookLocalDataSource
 import com.`as`.tsm.data.local.database.AppDatabase
 import com.`as`.tsm.data.local.entities.BookEntity
+import com.`as`.tsm.data.mappers.convertToEntity
 import com.`as`.tsm.data.model.Book
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +29,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun removeBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-        repository.remove(book)
+        repository.remove(book.convertToEntity())
     }
 
     fun addBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {

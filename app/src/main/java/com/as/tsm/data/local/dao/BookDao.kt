@@ -24,5 +24,5 @@ interface BookDao {
     suspend fun editBook(vararg book: BookEntity): Int
 
     @Delete
-    suspend fun delete(book: BookEntity)
+    fun delete(book: BookEntity)
 }

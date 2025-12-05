@@ -11,7 +11,7 @@ class BookRepository(private val dataSource: BookLocalDataSource) {
     fun getAllBooks() =
         dataSource.getAllBooks().map { entities -> entities.map { it.convertToModel() } }
 
-    suspend fun remove(book: Book) = dataSource.deleteBook(book.convertToEntity())
+    suspend fun remove(book: BookEntity) = dataSource.deleteBook(book)
     suspend fun add(book: Book) = dataSource.addBook(book.convertToEntity())
     suspend fun readBook(bookId: Int, isRead: Boolean) = dataSource.readBook(bookId, isRead)
     suspend fun editBook(bookEditado: BookEntity) =dataSource.editBook(bookEditado)
