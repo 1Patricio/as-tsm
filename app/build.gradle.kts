@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.as.tsm"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.as.tsm"
@@ -18,6 +18,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {
@@ -52,8 +56,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.room.common.jvm)
-    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

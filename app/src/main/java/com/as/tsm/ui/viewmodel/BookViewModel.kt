@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.`as`.tsm.data.BookRepository
 import com.`as`.tsm.data.local.BookLocalDataSource
 import com.`as`.tsm.data.local.database.AppDatabase
+import com.`as`.tsm.data.local.entities.BookEntity
 import com.`as`.tsm.data.model.Book
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,5 +37,9 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
 
     fun readBook(bookId: Int, isRead: Boolean) = viewModelScope.launch(Dispatchers.IO) {
         repository.readBook(bookId, isRead)
+    }
+
+    fun editBook( book: BookEntity) = viewModelScope.launch(Dispatchers.IO) {
+        repository.editBook(book)
     }
 }

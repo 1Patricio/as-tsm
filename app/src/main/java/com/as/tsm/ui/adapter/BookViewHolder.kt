@@ -8,7 +8,8 @@ class BookViewHolder (
     private val binding: BookItemListBinding,
     private val onDelete: (Book) -> Unit,
     private val onDetails: (Book) -> Unit,
-    private val onCheck: (Book) -> Unit
+    private val onCheck: (Book) -> Unit,
+    private val onEdit: (Book) -> Unit,
 
 ) : RecyclerView.ViewHolder(binding.root){
     fun bind(book: Book) {
@@ -20,6 +21,10 @@ class BookViewHolder (
 
         binding.actionDetails.setOnClickListener {
             onDetails(book)
+        }
+
+        binding.actionEdit.setOnClickListener {
+            onEdit(book)
         }
 
         binding.readCheck.addOnCheckedStateChangedListener { check, _ ->
