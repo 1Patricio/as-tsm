@@ -15,8 +15,9 @@ class BookViewHolder (
     fun bind(book: Book) {
         binding.book = book
 
-        binding.actionDelete.setOnClickListener {
+        binding.actionDelete.setOnLongClickListener {
             onDelete(book)
+            true
         }
 
         binding.actionDetails.setOnClickListener {
