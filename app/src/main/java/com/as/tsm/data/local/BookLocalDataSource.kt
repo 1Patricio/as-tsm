@@ -18,4 +18,8 @@ class BookLocalDataSource (private val bookDao: BookDao) {
     suspend fun readBook(bookId: Int, isRead: Boolean) {
         bookDao.readBook(bookId, !isRead)
     }
+
+    suspend fun editBook (book: BookEntity) {
+        bookDao.editBook(book)
+    }
 }

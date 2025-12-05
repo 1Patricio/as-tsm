@@ -2,7 +2,6 @@
 <layout>
 
     <data>
-
         <variable
             name="book"
             type="com.as.tsm.data.model.Book" />
@@ -143,6 +142,20 @@
                 android:textStyle="bold"
                 android:visibility="@{book.read ? view.GONE : view.VISIBLE}"
                 app:layout_constraintStart_toEndOf="@id/actionDetails"
+                app:layout_constraintTop_toBottomOf="@id/bookAuthor" />
+
+            <TextView
+                android:id="@+id/actionEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Editar"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="@{book.read ? view.GONE : view.VISIBLE}"
+                app:layout_constraintStart_toEndOf="@id/actionDelete"
                 app:layout_constraintTop_toBottomOf="@id/bookAuthor" />
 
             <androidx.constraintlayout.widget.Guideline

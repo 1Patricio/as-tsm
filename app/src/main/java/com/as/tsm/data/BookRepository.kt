@@ -1,6 +1,7 @@
 package com.`as`.tsm.data
 
 import com.`as`.tsm.data.local.BookLocalDataSource
+import com.`as`.tsm.data.local.entities.BookEntity
 import com.`as`.tsm.data.mappers.convertToEntity
 import com.`as`.tsm.data.mappers.convertToModel
 import com.`as`.tsm.data.model.Book
@@ -13,4 +14,5 @@ class BookRepository(private val dataSource: BookLocalDataSource) {
     suspend fun remove(book: Book) = dataSource.deleteBook(book.convertToEntity())
     suspend fun add(book: Book) = dataSource.addBook(book.convertToEntity())
     suspend fun readBook(bookId: Int, isRead: Boolean) = dataSource.readBook(bookId, isRead)
+    suspend fun editBook(bookEditado: BookEntity) =dataSource.editBook(bookEditado)
 }

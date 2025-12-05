@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.`as`.tsm.data.local.entities.BookEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,6 +19,9 @@ interface BookDao {
 
     @Query("Update books SET read = :isRead where id = :bookId")
     suspend fun readBook(bookId: Int, isRead: Boolean)
+
+    @Update
+    suspend fun editBook(vararg book: BookEntity): Int
 
     @Delete
     suspend fun delete(book: BookEntity)

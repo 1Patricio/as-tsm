@@ -9,9 +9,9 @@ data class BookEntity(
     @PrimaryKey(autoGenerate = true)
 
     val id: Int = 0,
-    val title: String,
-    val author: String,
-    val yearPublication: Int,
+    val title: String = "",
+    val author: String = "",
+    val yearPublication: String,
     val synopsis: String,
-    val read: Boolean
+    val read: Boolean = false
 ) : Serializable
