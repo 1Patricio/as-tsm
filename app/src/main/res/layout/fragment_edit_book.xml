@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="book"
+            type="com.as.tsm.data.model.Book" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,7 +26,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txvTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text='@{book.title}'
+                android:enabled="true"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,11 +88,11 @@
 
 
         <Button
-            android:id="@+id/addButton"
+            android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Adicionar"
+            android:text="Editar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutYearPublication" />

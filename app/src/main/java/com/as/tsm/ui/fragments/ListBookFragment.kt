@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.`as`.tsm.R
 import com.`as`.tsm.data.model.Book
 import com.`as`.tsm.databinding.FragmentListBookBinding
 import com.`as`.tsm.ui.adapter.BookAdapter
 import com.`as`.tsm.ui.viewmodel.BookViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlin.getValue
-import kotlin.io.root
 
 class ListBookFragment : Fragment() {
     private lateinit var binding: FragmentListBookBinding
@@ -47,13 +44,16 @@ class ListBookFragment : Fragment() {
                 goToDetails(book = book)
             },
             onCheck = { book ->
-                bookViewModel.readBook(bookId = book.id, isRead = !book.r)
-            }
+                bookViewModel.readBook(bookId = book.id, isRead = !book.read)
+            },
+            onEdit = { book ->
+                goToEdit(book = book)
+            },
         )
         rc.adapter = adapter
 
         binding.fabAdd.setOnClickListener {
-            val action = ListBookFragmentDirections.actionListTodoFragmentToFormTodoFragment()
+            val action = ListBookFragmentDirections.actionListBookFragmentToFormBookFragment()
             findNavController().navigate(action)
         }
     }
@@ -63,4 +63,8 @@ class ListBookFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    private fun goToEdit(book: Book) {
+        val action = ListBookFragmentDirections.actionListBookFragmentToEditBookFragment(book)
+        findNavController().navigate(action)
+    }
 }
