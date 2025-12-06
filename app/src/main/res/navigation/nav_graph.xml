@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/formBookFragment"
         android:name="com.as.tsm.ui.fragments.FormBookFragment"
-        android:label="FormBookFragment" >
+        android:label="Register Book" >
         <action
             android:id="@+id/action_formBookFragment_to_listBookFragment"
             app:destination="@id/listBookFragment" />
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/editBookFragment"
         android:name="com.as.tsm.ui.fragments.EditBookFragment"
-        android:label="EditBookFragment" >
+        android:label="Edit Book" >
         <argument
             android:name="book"
             app:argType="com.as.tsm.data.model.Book" />
